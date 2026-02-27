@@ -45,7 +45,7 @@ Realizar testes funcionais em uma API pública usando Postman, seguindo as melho
 1. **Importe a Coleção no Postman**
    - Abra o Postman
    - Clique em "Import"
-   - Selecione o arquivo `postman/collection.json`
+   - Selecione o arquivo `[postman/collection.json](https://renatasampaio-ml-6050587.postman.co/workspace/Renata-Sampaio's-Workspace~7f008231-21d1-4f5b-838e-da70949064e1/collection/52764279-6873edd1-585f-4a81-8af5-b58b6ed2130a?action=share&creator=52764279./postman/)`
 
 2. **Execute os Testes**
    - Selecione a coleção importada
