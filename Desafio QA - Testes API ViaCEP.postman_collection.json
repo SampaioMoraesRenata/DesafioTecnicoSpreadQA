@@ -1,0 +1,224 @@
+{
+  "info": {
+    "_postman_id": "6873edd1-585f-4a81-8af5-b58b6ed2130a",
+    "name": "Desafio QA - Testes API ViaCEP",
+    "description": "### Welcome to Postman! This is your first collection. \n\nCollections are your starting point for building and testing APIs. You can use this one to:\n\n• Group related requests\n• Test your API in real-world scenarios\n• Document and share your requests\n\nUpdate the name and overview whenever you’re ready to make it yours.\n\n[Learn more about Postman Collections.](https://learning.postman.com/docs/collections/collections-overview/)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "52764279",
+    "_collection_link": "https://go.postman.co/collection/52764279-6873edd1-585f-4a81-8af5-b58b6ed2130a?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "CT01 - FB - CEP Válido",
+      "item": [
+        {
+          "name": "CT01 - Consultar CEP válido",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"CT01 - Status code é 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"CT01 - Resposta está no formato JSON\", function () {",
+                  "    pm.response.to.be.json;",
+                  "});",
+                  "",
+                  "pm.test(\"CT01 - Campo 'cep' retorna '01001-000'\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData.cep).to.eql(\"01001-000\");",
+                  "});",
+                  "",
+                  "pm.test(\"CT01 - Campo 'logradouro' retorna 'Praça da Sé'\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData.logradouro).to.eql(\"Praça da Sé\");",
+                  "});",
+                  "",
+                  "pm.test(\"CT01 - Campo 'localidade' retorna 'São Paulo'\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData.localidade).to.eql(\"São Paulo\");",
+                  "});",
+                  "",
+                  "pm.test(\"CT01 - Campo 'uf' retorna 'SP'\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData.uf).to.eql(\"SP\");",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://viacep.com.br/ws/01001000/json/",
+              "protocol": "https",
+              "host": [
+                "viacep",
+                "com",
+                "br"
+              ],
+              "path": [
+                "ws",
+                "01001000",
+                "json",
+                ""
+              ]
+            },
+            "description": "Generated from cURL: curl -X GET \"https://viacep.com.br/ws/01001000/json/\""
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "CT02 - FA - CEP Inexistente",
+      "item": [
+        {
+          "name": "CT02 - Consultar CEP inexistente",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code deve ser 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "const responseJson = pm.response.json();\r",
+                  "\r",
+                  "pm.test(\"CT02 - Resposta está no formato JSON\", function () {\r",
+                  "    pm.response.to.be.json;\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Deve retornar flag de erro\", function () {\r",
+                  "    pm.expect(responseJson.erro).to.eql(\"true\"); // ✅ string \"true\"\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://viacep.com.br/ws/99999999/json/",
+              "protocol": "https",
+              "host": [
+                "viacep",
+                "com",
+                "br"
+              ],
+              "path": [
+                "ws",
+                "99999999",
+                "json",
+                ""
+              ]
+            },
+            "description": "Generated from cURL: curl -X GET \"https://viacep.com.br/ws/99999999/json/\""
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "CT03 - FE - CEP Inválido",
+      "item": [
+        {
+          "name": "CT03 - Consultar CEP com formato inválido",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"CT03 - Status code indica erro (400)\", function () {",
+                  "    pm.response.to.have.status(400);",
+                  "});",
+                  "",
+                  "pm.test(\"CT03 - Resposta indica requisição inválida (Bad Request)\", function () {",
+                  "    var responseText = pm.response.text();",
+                  "    pm.expect(responseText).to.include(\"400\");",
+                  "});",
+                  "",
+                  "pm.test(\"CT03 - Resposta não está no formato JSON\", function () {",
+                  "    var contentType = pm.response.headers.get(\"Content-Type\");",
+                  "    pm.expect(contentType).to.not.include(\"application/json\");",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://viacep.com.br/ws/ABCDE3123/json/",
+              "protocol": "https",
+              "host": [
+                "viacep",
+                "com",
+                "br"
+              ],
+              "path": [
+                "ws",
+                "ABCDE3123",
+                "json",
+                ""
+              ]
+            },
+            "description": "Generated from cURL: curl -X GET \"https://viacep.com.br/ws/ABCDE123/json/\""
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
