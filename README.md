@@ -27,7 +27,7 @@ Realizar testes funcionais em uma API pública usando Postman, seguindo as melho
 ### CT02 - CEP Inexistente
 - **Descrição**: Teste de fluxo alternativo
 - **Status**: ✅ Passou
-- **Evidência**: `evidencias/CT02_FA_Teste_Fluxo_Alternativo.pdf`
+- **Evidência**: `evidencias/CT02_CEPInexistente.png`
 
 ### CT03 - CEP Inválido
 - **Descrição**: Teste de tratamento de erros
