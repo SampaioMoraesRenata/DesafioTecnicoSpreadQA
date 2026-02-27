@@ -22,7 +22,7 @@ Realizar testes funcionais em uma API pública usando Postman, seguindo as melho
 ### CT01 - CEP Válido
 - **Descrição**: Teste do fluxo básico da API
 - **Status**: ✅ Passou
-- **Evidência**: `evidencias/CT01_FB_Teste_Fluxo_Basico.pdf`
+- **Evidência**: `evidencias/CT01_ CEPValido.png`
 
 ### CT02 - CEP Inexistente
 - **Descrição**: Teste de fluxo alternativo
