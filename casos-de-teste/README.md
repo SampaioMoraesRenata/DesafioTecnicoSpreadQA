@@ -12,9 +12,9 @@ Esta pasta contém a documentação de todos os casos de teste especificados em 
 
 | Caso | Status | Evidência |
 |------|--------|-----------|
-| CT01 | ✅ Passou | [Ver Relatório]|
-| CT02 | ✅ Passou | [Ver Relatório] |
-| CT03 | ✅ Passou | [Ver Relatório] |
+| CT01 | ✅ Passou | [evidencias/RelatórioDetalhado.png]|
+| CT02 | ✅ Passou | [evidencias/RelatórioDetalhado.png] |
+| CT03 | ✅ Passou | [evidencias/RelatórioDetalhado.png] |
 
 ## 📚 O que é Gherkin?
 
